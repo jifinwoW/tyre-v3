@@ -58,8 +58,8 @@
       :root {
         --dark-bg: #212c3d;
         --accent: #0000E6;
-        --light: #e2e8f0;
-        --navy: #212c3d;
+        --light: #fff;
+        --navy: #0000E6;
       }
       body,
       html {
@@ -112,7 +112,7 @@
       }
 
       th {
-        background-color: #2d465e; /* Blue header background */
+        background-color: var(--accent); /* Blue header background */
         color: white;
         font-weight: bold;
         text-transform: uppercase;
@@ -134,7 +134,7 @@
         border: 1px solid #eee;
       }
       .accordion {
-        background: linear-gradient(to right, #2d465e, #3a5a78);
+        background: var(--accent);
         color: white;
         cursor: pointer;
         padding: 15px;
@@ -154,7 +154,7 @@
       }
 
       .accordion:hover {
-        background: linear-gradient(to right, #243b50, #2d465e);
+        background: var(--accent);
       }
 
       .accordion i {
@@ -200,7 +200,7 @@
         animation: fadeOut 1s forwards 1s;
       }
       .spec-card h3 {
-        color: #e2e8f0;
+        color: var(--light);
       }
 
       @keyframes fadeOut {
@@ -249,7 +249,7 @@
         padding: 2rem;
       }
       .product-description {
-        color: #1e293b;
+        color: var(--accent);
       }
       .product-container {
         display: grid;
@@ -319,7 +319,7 @@
       .brochure-box h2 {
         font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, var(--accent), #000);
+    background: var(--accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
       }
@@ -337,7 +337,7 @@
         padding: 15px 30px;
         font-size: 1em;
         color: #fff;
-        background: linear-gradient(to right, var(--accent), #000);
+        background: var(--accent);
         text-decoration: none;
         border-radius: 50px;
         transition: all 0.3s ease;
@@ -385,11 +385,12 @@
         object-fit: cover;
         cursor: pointer;
         border: 2px solid transparent;
+        background: #fff;
         transition: all 0.3s ease;
       }
 
       .thumbnail.active {
-        border-color: var(--accent);
+        background-color: #d9e6f2;
       }
 
       .product-details {
@@ -399,7 +400,7 @@
       .product-title {
         font-size: 2.5rem;
         margin-bottom: 1.5rem;
-        background: linear-gradient(to right, var(--accent), #000);
+        background: var(--accent);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -418,6 +419,9 @@
         border-left: 4px solid var(--accent);
         transition: all 0.3s ease;
       }
+      .spec-card p{
+        color: var(--light);
+      }
 
       .features-list {
         margin: 2rem 0;
@@ -427,7 +431,7 @@
       .feature-item {
         padding: 1rem;
         margin: 0.5rem 0;
-        background: rgba(30, 41, 59, 0.99);
+        background: var(--accent);
         border-radius: 6px;
       }
 
