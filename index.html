@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://dentalpal.in/mezroc/assets/img/favicon.png"
+      rel="icon"
+    />
+    <link
+      href="https://dentalpal.in/mezroc/ssets/img/apple-touch-icon.png"
+      rel="apple-touch-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Premium Tyre Collection</title>
+    <style>
+      @font-face {
+        font-family: "Gotham Bold";
+        src: url("fonts-file/Gotham-Bold.woff2") format("woff2");
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Gotham Light";
+        src: url("fonts-file/Gotham-Light.woff2") format("woff2");
+        font-weight: 300;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Gotham Medium";
+        src: url("fonts-file/Gotham-Medium_1.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Gotham Thin";
+        src: url("fonts-file/Gotham-Thin.woff2") format("woff2");
+        font-weight: 100;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "ZingRustDemo Base";
+        src: url("fonts-file/ZingRustDemo-Base.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      :root {
+        --dark-bg: #212c3d;
+        --accent: #0000E6;
+        --light: #e2e8f0;
+        --navy: #212c3d;
+      }
+      body,
+      html {
+        overflow-x: hidden;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Gotham Medium", sans-serif;
+      }
+      body {
+        font-family: "Gotham Medium", sans-serif;
+      }
+      .low {
+        background: #fff;
+        color: var(--light);
+        perspective: 1000px;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "ZingRustDemo Base", serif;
+        color: #2d465e;
+      }
+      p {
+        font-size: 16px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden; /* Ensures the border-radius applies to the whole table */
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        color: #000;
+        padding: 1rem;
+        text-align: left;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      th {
+        background-color: #2d465e; /* Blue header background */
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Zebra-striping with a gradient */
+      tbody tr:nth-child(even) {
+        background: linear-gradient(to right, #f9f9f9, #f0f0f0);
+      }
+
+      /* Hover effect with a darker gradient */
+      tbody tr:hover {
+        background: linear-gradient(to right, #e6f2ff, #d9e6f2);
+      }
+
+      /* Add a subtle border to the table cells */
+      td {
+        border: 1px solid #eee;
+      }
+      .accordion {
+        background: linear-gradient(to right, #2d465e, #3a5a78);
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        font-size: 18px;
+
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-family: "ZingRustDemo Base", serif;
+      }
+
+      .accordion:hover {
+        background: linear-gradient(to right, #243b50, #2d465e);
+      }
+
+      .accordion i {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .accordion.active i {
+        transform: rotate(90deg);
+      }
+
+      .active:after {
+        transform: rotate(90deg); /* Downward arrow */
+      }
+
+      .panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+      }
+
+      /* Loading Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--dark-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        animation: fadeOut 1s forwards 1s;
+      }
+      .spec-card h3 {
+        color: #e2e8f0;
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .loader {
+        border: 4px solid var(--accent);
+        border-top: 4px solid transparent;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Content Animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .product-section {
+        max-width: 1400px;
+        margin: 4rem auto;
+        padding: 2rem;
+      }
+      .product-description {
+        color: #1e293b;
+      }
+      .product-container {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 4rem;
+       
+        margin-bottom: 2rem;
+      }
+
+      .image-slider {
+        position: relative;
+        border-radius: 16px;
+        height: fit-content;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        transform: perspective(1000px);
+      }
+
+      .main-image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        height: 500px;
+      }
+
+      ul {
+        padding-left: 0rem;
+      }
+
+      .main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease-out;
+        transform-origin: center center;
+        will-change: transform;
+      }
+
+      .magnifier {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 3px solid rgba(245, 158, 11, 0.8);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+
+        pointer-events: none;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        transition: opacity 0.2s, transform 0.2s;
+      }
+
+      .main-image-container:hover {
+        border: 2px solid #0b5ed7;
+      }
+
+      .brochure-box {
+        background: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: left;
+
+        width: 100%;
+      }
+
+      .brochure-box h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #333;
+        font-weight: 600;
+      }
+
+      .brochure-box p {
+        font-size: 1em;
+        margin-bottom: 30px;
+        color: #666;
+        line-height: 1.8;
+      }
+
+      .download-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        font-size: 1em;
+        color: #fff;
+        background-color: #0b5ed7;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+      }
+
+      .download-button i {
+        margin-right: 10px;
+        font-size: 1.2em;
+      }
+
+      .download-button:hover {
+        background-color: #2575fc;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(37, 117, 252, 0.3);
+      }
+
+      .download-button:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+      }
+
+      /* For Mobile Devices */
+      @media (hover: none) {
+        .main-image:hover {
+          transform: scale(1);
+          filter: brightness(0.9);
+        }
+      }
+
+      .main-image.loaded {
+        opacity: 1;
+      }
+
+      .thumbnails {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--navy);
+      }
+
+      .thumbnail {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .thumbnail.active {
+        border-color: var(--accent);
+      }
+
+      .product-details {
+        padding: 2rem;
+      }
+
+      .product-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--accent), #000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .spec-card {
+        padding: 1.5rem;
+        background: var(--navy);
+        border-radius: 8px;
+        border-left: 4px solid var(--accent);
+        transition: all 0.3s ease;
+      }
+
+      .features-list {
+        margin: 2rem 0;
+        list-style: none;
+      }
+
+      .feature-item {
+        padding: 1rem;
+        margin: 0.5rem 0;
+        background: rgba(30, 41, 59, 0.99);
+        border-radius: 6px;
+      }
+
+      @media (max-width: 768px) {
+        .product-container {
+          grid-template-columns: 1fr;
+        }
+        .product-section {
+          max-width: 1400px;
+          margin: 4rem auto;
+          padding: 10px;
+        }
+        .product-details {
+          padding: 10px;
+        }
+        .spec-card {
+          padding: 10px;
+          background: var(--navy);
+          border-radius: 8px;
+          border-left: 4px solid var(--accent);
+          transition: all 0.3sease;
+        }
+        .main-image-container {
+          position: relative;
+          overflow: hidden;
+          height: auto;
+          max-height: 500px;
+        }
+
+        .main-image {
+          height: 300px;
+        }
+        .hero img {
+          width: 100%;
+          height: auto;
+        }
+        .hero h1 {
+          font-size: 2rem !important;
+          margin-bottom: 1rem !important;
+          color: #fff !important;
+        }
+        .hero-content {
+          background-color: rgba(0, 0, 0, 0.5) !important;
+          padding: 20px 10px !important;
+          border-radius: 8px !important;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto; /* Enable horizontal scrolling */
+          white-space: nowrap; /* Prevent wrapping */
+        }
+        .hero-content {
+          background-color: rgba(
+            0,
+            0,
+            0,
+            0.5
+          ); /* Semi-transparent black overlay */
+          padding: 20px 20px;
+          border-radius: 8px;
+        }
+      }
+      .hero {
+        background-image: url("banner1.jpg"); /* Use your image here */
+        background-size: cover;
+        background-position: center;
+        min-height: 400px; /* Adjust as needed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white; /* Text color */
+      }
+
+      .hero-content {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Semi-transparent black overlay */
+        padding: 20px 200px;
+        border-radius: 8px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+
+        color: #fff;
+      }
+
+      .hero p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .overlay {
+        position: absolute;
+        bottom: -100%; /* Start hidden below the image */
+        left: 0;
+        min-height: 200px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+        color: #fff;
+        text-align: center;
+        align-content: center;
+        padding: 10px;
+        transition: bottom 0.3s ease;
+      }
+      .main-image-container:hover .main-image {
+        transform: scale(1.1); /* Zoom effect */
+        filter: brightness(0.8); /* Slightly darken the image */
+      }
+
+      .main-image-container:hover .overlay {
+        bottom: 0; /* Slide up the overlay */
+      }
+      .overlay h3 {
+        color: #fff;
+        font-size: 2rem;
+      }
+      #solid-details2 {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="loader"></div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Our Products</h1>
+        <p>
+          Our solid tyres are engineered to deliver unbeatable performance in
+          the toughest working conditions—whether on construction sites, in busy
+          ports, or at industrial warehouses. From forklifts to aerial platform
+          vehicles, we provide the durability and reliability you need to keep
+          your operations running smoothly. With MEZROC, you get tyres that are
+          solid as a rock and built for the long haul, offering unmatched
+          endurance and strength.
+        </p>
+        <ul
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            gap: 10px;
+          "
+        >
+          <li>
+            <a style="color: #fff; text-decoration: none" href="#">Home</a>
+          </li>
+          <li>/</li>
+          <li>Products</li>
+        </ul>
+      </div>
+    </section>
+    <div class="low">
+      <section class="product-section">
+        <div class="product-container">
+          <div class="image-slider animate-on-scroll">
+            <div class="main-image-container">
+              <img src="images/solid1.png" class="main-image" alt="Tyre 1" />
+              <div class="overlay">
+                <h3>SOLID RESILIENT TIRES</h3>
+                <!-- Replace with your desired text -->
+              </div>
+            </div>
+            <div class="thumbnails">
+              <img
+                src="images/solid1.png"
+                class="thumbnail active"
+                data-id="solid-details1"
+                onclick="changeImage(this.closest('.product-section'), this)"
+              />
+              <img
+                src="images/solid2.png"
+                data-id="solid-details2"
+                class="thumbnail"
+                onclick="changeImage(this.closest('.product-section'), this)"
+              />
+            </div>
+          </div>
+
+          <div
+            id="solid-details1"
+            class="product-details animate-on-scroll"
+            style="transition-delay: 0.2s"
+          >
+            <h1 class="product-title">SOLID RESILIENT tyreS</h1>
+            <p class="product-description">
+              The construction of a resilient tyre includes several layers of
+              diƯerent types of rubber compounds. Our solid resilient tyres
+              consist of a tread layer, a middle layer and a base layer with
+              steel bead reinforcements. The benefits include puncture and
+              maintenance free operations, higher life and low cost per hour.
+            </p>
+
+            <div class="spec-grid">
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.3s"
+              >
+                <h3>tyre Type</h3>
+                <p>Black, Non-Lip</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.4s"
+              >
+                <h3>Suitable Rim type</h3>
+                <p>3 piece, 4 piece, 2 piece-split</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.5s"
+              >
+                <h3>No. of Layers</h3>
+                <p>3</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Beads</h3>
+                <p>Yes</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Suitable for:</h3>
+                <p>Forklifts, Reach Truck, Ground Support Equipment</p>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.7s"
+              >
+                Maximum stability, safety and durability
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.8s"
+              >
+                Long-lasting performance with high loading capacity
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.9s"
+              >
+                Excellent traction and puncture resistance
+              </li>
+            </ul>
+          </div>
+          <div
+            id="solid-details2"
+            class="product-details animate-on-scroll"
+            style="transition-delay: 0.2s"
+          >
+            <h1 class="product-title">SOLID RESILIENT tyreS</h1>
+            <p class="product-description">
+              The construction of a resilient tyre includes several layers of
+              diƯerent types of rubber compounds. Our solid resilient tyres
+              consist of a tread layer, a middle layer and a base layer with
+              steel bead reinforcements. The benefits include puncture and
+              maintenance free operations, higher life and low cost per hour.
+            </p>
+
+            <div class="spec-grid">
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.3s"
+              >
+                <h3>tyre Type</h3>
+                <p>Black, Lip Tyre</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.4s"
+              >
+                <h3>Suitable Rim type</h3>
+                <p>Flat Base</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.5s"
+              >
+                <h3>No. of Layers</h3>
+                <p>3</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Beads</h3>
+                <p>Yes</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Suitable for:</h3>
+                <p>Forklifts</p>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.7s"
+              >
+                Easy to Fit
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.8s"
+              >
+                Long-lasting performance with high loading capacity
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.9s"
+              >
+                Excellent traction
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="accordion">
+          SOLID RESILIENT TYRES SIZES<i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="panel">
+          <table>
+            <thead>
+              <tr>
+                <th>SL NO.</th>
+                <th>tyre SIZE</th>
+                <th>tyre SIZE (Alternative)</th>
+                <th colspan="2">tyre DIMENSIONS (MM)</th>
+                <th colspan="3">
+                  LOAD CAPACITY (KG) - Counterbalanced Lift Truck (Up to 25
+                  KMPH)
+                </th>
+                <th colspan="3">LOAD CAPACITY (KG) - Other Vehicles</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>OD</th>
+                <th>SW</th>
+                <th>LOAD WHEEL</th>
+                <th>STEER WHEEL</th>
+                <th>UPTO 6 KMPH</th>
+                <th>UPTO 10 KMPH</th>
+                <th>UPTO 25 KMPH</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>18X7-8</td>
+                <td>4.33R-8</td>
+                <td>454</td>
+                <td>156</td>
+                <td>2145</td>
+                <td>1650</td>
+                <td>2145</td>
+                <td>1945</td>
+                <td>1650</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>5.00-8</td>
+                <td>3.00D-8</td>
+                <td>459</td>
+                <td>115</td>
+                <td>1415</td>
+                <td>1090</td>
+                <td>1415</td>
+                <td>1285</td>
+                <td>1090</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>16X6-8</td>
+                <td>4.33R-8</td>
+                <td>411</td>
+                <td>152</td>
+                <td>1495</td>
+                <td>1150</td>
+                <td>1495</td>
+                <td>1350</td>
+                <td>1150</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>6.00-9</td>
+                <td>4.00E-09</td>
+                <td>519</td>
+                <td>331</td>
+                <td>1885</td>
+                <td>1450</td>
+                <td>1885</td>
+                <td>1710</td>
+                <td>1450</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>21X8-9</td>
+                <td>6.00E-09</td>
+                <td>517</td>
+                <td>787</td>
+                <td>2755</td>
+                <td>2120</td>
+                <td>2755</td>
+                <td>2500</td>
+                <td>2120</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>23X9-10</td>
+                <td>6.50F-10</td>
+                <td>578</td>
+                <td>202</td>
+                <td>3445</td>
+                <td>2650</td>
+                <td>3445</td>
+                <td>3125</td>
+                <td>2650</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>6.50-10</td>
+                <td>5.00F-10</td>
+                <td>566</td>
+                <td>165</td>
+                <td>2340</td>
+                <td>1800</td>
+                <td>2340</td>
+                <td>2125</td>
+                <td>1800</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>27X10-12</td>
+                <td>8.00D-12</td>
+                <td>670</td>
+                <td>235</td>
+                <td>3900</td>
+                <td>3000</td>
+                <td>3900</td>
+                <td>3440</td>
+                <td>3000</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>7.00-12</td>
+                <td>5.00S-12</td>
+                <td>650</td>
+                <td>170</td>
+                <td>2920</td>
+                <td>2240</td>
+                <td>2920</td>
+                <td>2645</td>
+                <td>2240</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>23X10-12</td>
+                <td>8.00D-12</td>
+                <td>586</td>
+                <td>234</td>
+                <td>3770</td>
+                <td>2900</td>
+                <td>3770</td>
+                <td>3420</td>
+                <td>2900</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>8.25-15</td>
+                <td>6.50-15</td>
+                <td>823</td>
+                <td>202</td>
+                <td>4750</td>
+                <td>3650</td>
+                <td>4750</td>
+                <td>4300</td>
+                <td>3650</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>8.15-15</td>
+                <td>7.00-15</td>
+                <td>687</td>
+                <td>224</td>
+                <td>3900</td>
+                <td>3000</td>
+                <td>3900</td>
+                <td>3540</td>
+                <td>3000</td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>7.00-15</td>
+                <td>5.50-15</td>
+                <td>722</td>
+                <td>180</td>
+                <td>3545</td>
+                <td>2725</td>
+                <td>3545</td>
+                <td>3215</td>
+                <td>2725</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>7.50-15</td>
+                <td>6.00-15</td>
+                <td>752</td>
+                <td>199</td>
+                <td>3900</td>
+                <td>3000</td>
+                <td>3900</td>
+                <td>3540</td>
+                <td>3000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="product-section">
+        <div class="product-container">
+          <div class="image-slider animate-on-scroll">
+            <div class="main-image-container">
+              <img src="images/press-on-band1.png" class="main-image" alt="Tyre 2" />
+              <div class="magnifier"></div>
+            </div>
+            <div class="thumbnails">
+              <img
+                src="images/press-on-band1.png"
+                data-id="presson-details1"
+                class="thumbnail active"
+                onclick="changeImage(this.closest('.product-section'), this)"
+              />
+              <img
+              src="images/press-on-band3.png"
+              data-id="presson-details2"
+              class="thumbnail"
+              onclick="changeImage(this.closest('.product-section'), this)"
+            />
+            </div>
+          </div>
+
+          <div
+          id="presson-details1"
+            class="product-details animate-on-scroll"
+            style="transition-delay: 0.2s"
+          >
+            <h1 class="product-title">Press On Band Tyres</h1>
+            <p class="product-description">
+              Solid press on tires, also known as cushion tires, are designed
+              specifically to meet the requirements of tough material handling
+              applications. They are puncture free, highly resistant to wear and over
+              one of the lowest cost of ownership. Press on tires further enhance
+              forklifts stability, load capacity and service life of equipment. They are
+              made of a rubber tread layer bonded to a cylindrical steel band and
+              then mounted onto a steel hub using a press.
+            </p>
+
+            <div class="spec-grid">
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.3s"
+              >
+                <h3>tyre Type</h3>
+                <p>Black</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.4s"
+              >
+                <h3>Suitable For</h3>
+                <p>Forklifts</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.5s"
+              >
+                <h3>No. of Layers</h3>
+                <p>1</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Tread Pattern</h3>
+                <p>Smooth, Rib, Lug</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Beads</h3>
+                <p>No</p>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.7s"
+              >
+              Maximum stability, safety and durability
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.8s"
+              >
+              Long-lasting performance with high loading capacity 
+
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.9s"
+              >
+              Low Rolling Resistance 
+
+              </li>
+             
+            </ul>
+          </div>
+          <div
+          id="presson-details2"
+            class="product-details animate-on-scroll"
+            style="transition-delay: 0.2s"
+          >
+            <h1 class="product-title">Press On Band Tyres</h1>
+            <p class="product-description">
+              Solid press on tires, also known as cushion tires, are designed
+              specifically to meet the requirements of tough material handling
+              applications. They are puncture free, highly resistant to wear and over
+              one of the lowest cost of ownership. Press on tires further enhance
+              forklifts stability, load capacity and service life of equipment. They are
+              made of a rubber tread layer bonded to a cylindrical steel band and
+              then mounted onto a steel hub using a press.
+            </p>
+
+            <div class="spec-grid">
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.3s"
+              >
+                <h3>tyre Type</h3>
+                <p>Black</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.4s"
+              >
+                <h3>Suitable For</h3>
+                <p>Forklifts</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.5s"
+              >
+                <h3>No. of Layers</h3>
+                <p>1</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Tread Pattern</h3>
+                <p>Smooth</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Beads</h3>
+                <p>No</p>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.7s"
+              >
+              Maximum stability, safety and durability
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.8s"
+              >
+              Long-lasting performance with high loading capacity 
+
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.9s"
+              >
+              Low Rolling Resistance 
+
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+        <button class="accordion">
+          PRESS ON BAND TYRES SIZES<i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="panel">
+          <table>
+            <thead>
+              <tr>
+                <th>SL NO.</th>
+                <th>TIRE SIZE (INCH)</th>
+                <th>TIRE OD (MM)</th>
+                <th>TREAD WIDTH (MM)</th>
+                <th colspan="2">TREAD PATTERN</th>
+                <th colspan="2">
+                  LOAD CAPACITY - COUNTERBALANCED LIFT TRUCK UPTO 16 KMPH
+                </th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>SMOOTH</th>
+                <th>LUG</th>
+                <th>LOAD WHEEL (KG)</th>
+                <th>STEER WHEEL (KG)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>15X5X11 1/4</td>
+                <td>383</td>
+                <td>127</td>
+                <td>X</td>
+                <td></td>
+                <td>1240</td>
+                <td>1040</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>15X6X11 1/4</td>
+                <td>381</td>
+                <td>152</td>
+                <td>X</td>
+                <td></td>
+                <td>1530</td>
+                <td>1285</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>16X5X10 1/2</td>
+                <td>410</td>
+                <td>100</td>
+                <td>X</td>
+                <td>X</td>
+                <td>1345</td>
+                <td>1130</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>16X6X10 1/2</td>
+                <td>410</td>
+                <td>127</td>
+                <td>X</td>
+                <td>X</td>
+                <td>1710</td>
+                <td>1435</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>16 1/4X5X11 1/4</td>
+                <td>410</td>
+                <td>108</td>
+                <td>X</td>
+                <td></td>
+                <td>1360</td>
+                <td>1145</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>16 1/4X6X11 1/4</td>
+                <td>410</td>
+                <td>127</td>
+                <td>X</td>
+                <td>X</td>
+                <td>1715</td>
+                <td>1440</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>18X6X12 1/8</td>
+                <td>457</td>
+                <td>132</td>
+                <td>X</td>
+                <td>X</td>
+                <td>1870</td>
+                <td>1575</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>18X7X12 1/8</td>
+                <td>457</td>
+                <td>143</td>
+                <td>X</td>
+                <td>X</td>
+                <td>2280</td>
+                <td>1915</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>18X8X12 1/8</td>
+                <td>457</td>
+                <td>172</td>
+                <td>X</td>
+                <td>X</td>
+                <td>2685</td>
+                <td>2255</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>18X9X12 1/8</td>
+                <td>457</td>
+                <td>196</td>
+                <td>X</td>
+                <td>X</td>
+                <td>3090</td>
+                <td>2600</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>21X7X15</td>
+                <td>533</td>
+                <td>145</td>
+                <td></td>
+                <td>X</td>
+                <td>2105</td>
+                <td>1765</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>21X8X15</td>
+                <td>533</td>
+                <td>183</td>
+                <td></td>
+                <td>X</td>
+                <td>2560</td>
+                <td>2150</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="product-section">
+        <div class="product-container">
+          <div class="image-slider animate-on-scroll">
+            <div class="main-image-container">
+              <img
+                src="images/nonmarking1.png"
+                class="main-image"
+                alt="All Terrain Master"
+              />
+              <div class="magnifier"></div>
+            </div>
+            <div class="thumbnails">
+              <img
+              data-id="nom1"
+                src="images/nonmarking1.png"
+                class="thumbnail active"
+                onclick="changeImage(this.closest('.product-section'), this)"
+              />
+              <img
+              data-id="nom2"
+              src="images/nonmarking2.png"
+              class="thumbnail"
+              onclick="changeImage(this.closest('.product-section'), this)"
+            />
+            </div>
+          </div>
+
+          <div
+          id="nom1"
+            class="product-details animate-on-scroll"
+            style="transition-delay: 0.2s"
+          >
+            <h1 class="product-title">Non marking Tyres</h1>
+            <p class="product-description">
+              Solid press on tyres, also known as cushion tires, are designed
+              specifically to meet the requirements of tough material handling
+              applications. They are puncture free, highly resistant to wear and
+              oƯer one of the lowest cost of ownership. Press on tyres further
+              enhance forklifts stability, load capacity and service life of
+              equipment. They are made of a rubber tread layer bonded to a
+              cylindrical steel band and then mounted onto a steel hub using a
+              press.
+            </p>
+
+            <div class="spec-grid">
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.3s"
+              >
+                <h3>tyre Type</h3>
+                <p>Non Marking</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.4s"
+              >
+                <h3>Suitable For</h3>
+                <p>Forklifts, Aerial Platforms</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.5s"
+              >
+                <h3>No. of Layers</h3>
+                <p>3</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Beads</h3>
+                <p>Yes</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Suitable Rim type</h3>
+                <p>3 piece, 4 piece, 2 piece-split 
+                </p>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.7s"
+              >
+              No floor markings 
+
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.8s"
+              >
+              Silica Based Compound
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.9s"
+              >
+              Keeps floor Clean and hygienic
+              </li>
+              
+            </ul>
+          </div>
+          <div
+          id="nom2"
+            class="product-details animate-on-scroll"
+            style="transition-delay: 0.2s"
+          >
+            <h1 class="product-title">Non marking Tyres</h1>
+            <p class="product-description">
+              Solid press on tyres, also known as cushion tires, are designed
+              specifically to meet the requirements of tough material handling
+              applications. They are puncture free, highly resistant to wear and
+              oƯer one of the lowest cost of ownership. Press on tyres further
+              enhance forklifts stability, load capacity and service life of
+              equipment. They are made of a rubber tread layer bonded to a
+              cylindrical steel band and then mounted onto a steel hub using a
+              press.
+            </p>
+
+            <div class="spec-grid">
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.3s"
+              >
+                <h3>tyre Type</h3>
+                <p>Non Marking</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.4s"
+              >
+                <h3>Suitable For</h3>
+                <p>Forklifts</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.5s"
+              >
+                <h3>No. of Layers</h3>
+                <p>1</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Beads</h3>
+                <p>No</p>
+              </div>
+              <div
+                class="spec-card animate-on-scroll"
+                style="transition-delay: 0.6s"
+              >
+                <h3>Tread Pattern</h3>
+                <p>Smooth
+                </p>
+              </div>
+            </div>
+
+            <ul class="features-list">
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.7s"
+              >
+              No Floor Marking, Hygienic Floors
+
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.8s"
+              >
+              Maximum stability, safety and durability
+              </li>
+              <li
+                class="feature-item animate-on-scroll"
+                style="transition-delay: 0.9s"
+              >
+              Low Rolling Resistance
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="brochure-box">
+          <h2>Download Our Brochure</h2>
+          <p>
+            Explore our services, products, and solutions in detail. Download
+            our brochure today and take the first step toward achieving your
+            goals.
+          </p>
+          <a
+            href="path/to/your/brochure.pdf"
+            download="Brochure.pdf"
+            class="download-button"
+          >
+            <i class="fas fa-download"></i> Download Brochure
+          </a>
+        </div>
+      </div>
+      <br /><br />
+    </div>
+    <script>
+      document.querySelectorAll(".accordion").forEach((accordion) => {
+        accordion.addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
+    <script>
+      window.addEventListener("load", () => {
+        document.querySelector(".loading").style.display = "none";
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll(".animate-on-scroll").forEach((element) => {
+        observer.observe(element);
+      });
+
+      function changeImage(section, thumb) {
+        const thumbnails = section.querySelectorAll(".thumbnail");
+        const mainImage = section.querySelector(".main-image");
+
+        thumbnails.forEach((t) => t.classList.remove("active"));
+        thumb.classList.add("active");
+
+        const targetId = thumb.dataset.id;
+
+        if (targetId == "solid-details1") {
+          let targetElement1 = document.getElementById(targetId);
+          let targetElement2 = document.getElementById("solid-details2");
+          if (targetElement1) {
+            targetElement1.style.display = "block";
+          }
+          if (targetElement2) {
+            targetElement2.style.display = "none";
+          }
+        }
+
+        if (targetId == "solid-details2") {
+          let targetElement1 = document.getElementById(targetId);
+          let targetElement2 = document.getElementById("solid-details1");
+          if (targetElement1) {
+            targetElement1.style.display = "block";
+          }
+          if (targetElement2) {
+            targetElement2.style.display = "none";
+          }
+        }
+
+        if (targetId == "presson-details1") {
+          let targetElement1 = document.getElementById(targetId);
+          let targetElement2 = document.getElementById("presson-details2");
+          if (targetElement1) {
+            targetElement1.style.display = "block";
+          }
+          if (targetElement2) {
+            targetElement2.style.display = "none";
+          }
+        }
+
+        if (targetId == "presson-details2") {
+          let targetElement1 = document.getElementById(targetId);
+          let targetElement2 = document.getElementById("presson-details1");
+          if (targetElement1) {
+            targetElement1.style.display = "block";
+          }
+          if (targetElement2) {
+            targetElement2.style.display = "none";
+          }
+        }
+
+        if (targetId == "nom1") {
+          let targetElement1 = document.getElementById(targetId);
+          let targetElement2 = document.getElementById("nom2");
+          if (targetElement1) {
+            targetElement1.style.display = "block";
+          }
+          if (targetElement2) {
+            targetElement2.style.display = "none";
+          }
+        }
+
+        if (targetId == "nom2") {
+          let targetElement1 = document.getElementById(targetId);
+          let targetElement2 = document.getElementById("nom1");
+          if (targetElement1) {
+            targetElement1.style.display = "block";
+          }
+          if (targetElement2) {
+            targetElement2.style.display = "none";
+          }
+        }
+
+        mainImage.style.opacity = 0;
+        setTimeout(() => {
+          mainImage.src = thumb.src;
+          mainImage.style.opacity = 1;
+        }, 300);
+      }
+
+      document.querySelectorAll(".main-image").forEach((img) => {
+        img.addEventListener("load", () => {
+          img.classList.add("loaded");
+        });
+      });
+
+      const imageContainers = document.querySelectorAll(
+        ".main-image-container"
+      );
+      // imageContainers.forEach((imageContainer) => {
+      //   const magnifier = imageContainer.querySelector(".magnifier");
+      //   const mainImage = imageContainer.querySelector(".main-image");
+
+      //   const zoomLevel = 2;
+
+      //   imageContainer.addEventListener("mousemove", (e) => {
+      //     const { left, top, width, height } =
+      //       imageContainer.getBoundingClientRect();
+      //     const x = e.clientX - left;
+      //     const y = e.clientY - top;
+
+      //     magnifier.style.left = `${x}px`;
+      //     magnifier.style.top = `${y}px`;
+      //     magnifier.style.opacity = 1; //Ensure Magnifier is visible on every mouse move
+
+      //     const percentX = (x / width) * 100;
+      //     const percentY = (y / height) * 100;
+
+      //     mainImage.style.transformOrigin = `${percentX}% ${percentY}%`;
+      //     mainImage.style.transform = `scale(${zoomLevel})`;
+      //   });
+
+      //   imageContainer.addEventListener("mouseleave", () => {
+      //     magnifier.style.opacity = 0;
+      //     mainImage.style.transform = "scale(1)";
+      //     mainImage.style.transformOrigin = "center center";
+      //   });
+      // });
+    </script>
+  </body>
+</html>
